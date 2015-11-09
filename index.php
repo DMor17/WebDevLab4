@@ -6,14 +6,7 @@
 <body>
 <p>Wikipedia test</p>
 
-<form method="POST">
-    <select name="selectID" id="selectID">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-</form>
+
 </body>
 
 </html>
@@ -27,14 +20,29 @@ $db = new mysqli(
     "b0434b31",
     "dm1406997"
 );
+?>
+<form method="POST">
+    <select name="selectID" id="selectID" onchange="this.form.submit()">
+        <?php
+        $sql_query = "Select subsectionID From subsections";
+        $qr = $db->query($sql_query);
+        while ($row = $qr->fetch_array()) {
+            echo '<option value='.$row['subsectionID'].'>'.$row['subsectionID'];
+        };
+        ?>
 
 
-$sql_query = "Select * From sectionText WHERE sectionID like ". $sectionID;
+
+    </select>
+</form>
+<?php
+$sql_query = "Select * From sectionText, subsectionText WHERE sectionID like ". $sectionID . " and sectionText.sectionID = subsectionText.sectionID";
 $qr = $db->query($sql_query);
 while ($row = $qr->fetch_array()) {
     echo "<p>" . $row['sectionName'] . $row['text'] . "<br>" . "</p>";
 
 }
+
 
 if($db->connect_errno) {
 
