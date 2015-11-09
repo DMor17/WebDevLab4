@@ -6,7 +6,7 @@
 <body>
 <p>Wikipedia test</p>
 
-<form action="index.php" method="POST">
+<form method="POST">
     <select name="selectID" id="selectID" onchange="this.form.submit()">
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -20,7 +20,7 @@
 
 
 <?php
-$sectionID = 0;
+$sectionID = $_POST["selectID"];
 $db = new mysqli(
     "br-cdbr-azure-south-a.cloudapp.net",
     "bd7768bee1ccf1",
@@ -29,10 +29,10 @@ $db = new mysqli(
 );
 
 
-$sql_query = "Select * From sectionText WHERE sectionID Like $_POST(selectID)";
+$sql_query = "Select * From sectionText WHERE sectionID like $sectionID";
 $qr = $db->query($sql_query);
 while ($row = $qr->fetch_array()) {
-    echo "<p>" . $row . "</p>";
+    echo "<p>" . $row['sectionName'] . "</p>";
 
 }
 $qr->close();
