@@ -32,7 +32,7 @@ $db = new mysqli(
 $sql_query = "Select * From sectionText WHERE sectionID like ".$sectionID;
 $qr = $db->query($sql_query);
 while ($row = $qr->fetch_array()) {
-    echo "<p>" . $row . "</p>";
+    echo "<p>" . $row['sectionName'] . $row['text'] . "<br>" . "</p>";
 
 }
 
