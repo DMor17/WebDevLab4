@@ -36,8 +36,9 @@ $db = new mysqli(
     </select>
 </form>
 <?php
+
 $sectionID = $_POST["selectID"];
-$sql_query = "Select * From sectionText, subsectionText WHERE sectionID like ". $sectionID . " and sectionText.sectionID = subsectionText.sectionID";
+$sql_query = "Select * From sectionText WHERE sectionID like ". $sectionID;
 $qr = $db->query($sql_query);
 while ($row = $qr->fetch_array()) {
     echo "<p>" . $row['sectionName'] . $row['text'] . "<br>" . "</p>";
