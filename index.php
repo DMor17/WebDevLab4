@@ -7,7 +7,7 @@
 <p>Wikipedia test</p>
 
 <form method="POST">
-    <select name="selectID" id="selectID" onchange="this.form.submit()">
+    <select name="selectID" id="selectID">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
