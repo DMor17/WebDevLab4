@@ -8,10 +8,10 @@
 
 <form method="POST">
     <select name="selectID" id="selectID" onchange="this.form.submit()">
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-        <option value="4">Four</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
     </select>
 </form>
 </body>
@@ -29,7 +29,7 @@ $db = new mysqli(
 );
 
 
-$sql_query = "Select * From sectionText WHERE sectionID like ".$sectionID;
+$sql_query = "Select * From sectionText WHERE sectionID like ". $sectionID;
 $qr = $db->query($sql_query);
 while ($row = $qr->fetch_array()) {
     echo "<p>" . $row['sectionName'] . $row['text'] . "<br>" . "</p>";
