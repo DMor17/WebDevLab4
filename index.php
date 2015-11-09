@@ -29,18 +29,21 @@ $db = new mysqli(
 );
 
 
-$sql_query = "Select * From sectionText WHERE sectionID like $sectionID";
+$sql_query = "Select * From sectionText WHERE sectionID like ".$sectionID;
 $qr = $db->query($sql_query);
 while ($row = $qr->fetch_array()) {
-    echo "<p>" . $row['sectionName'] . "</p>";
+    echo "<p>" . $row . "</p>";
 
 }
-$qr->close();
-$db->close();
-// test if connection was established, and print any errors
+
 if($db->connect_errno) {
 
     die('Connectfailed[' . $db->connect_error . ']');
+
+$qr->close();
+$db->close();
+// test if connection was established, and print any errors
+
 
 
 
